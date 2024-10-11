@@ -39,6 +39,14 @@ import random
 # Следующую строку обязательно нужно выполнить иначе задание будет сложнее проверить
 random.seed(20220523)
 random_list = [int(random.gammavariate(10, 500)) for _ in range(1000)]
-
-# Тут решение
-...
+#   тут самое простое что пришло на ум, завтра попробую с использованием полезных маериалов
+d = {}
+count = 0
+for i in random_list:
+   a = i // 1000 * 1000
+   if 0 <= i - a < 1000:
+      d.setdefault(a, []).append(i)
+new_d = {}
+for k, v in sorted(d.items()):
+   new_d.setdefault(k, len(v))
+print(new_d)
