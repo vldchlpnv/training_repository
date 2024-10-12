@@ -37,16 +37,19 @@
 # Код генерирует список из 1000 случайных чисел
 import random
 # Следующую строку обязательно нужно выполнить иначе задание будет сложнее проверить
+
+import random
+
 random.seed(20220523)
 random_list = [int(random.gammavariate(10, 500)) for _ in range(1000)]
-#   тут самое простое что пришло на ум, завтра попробую с использованием полезных маериалов
 d = {}
 count = 0
 for i in random_list:
    a = i // 1000 * 1000
    if 0 <= i - a < 1000:
       d.setdefault(a, []).append(i)
-new_d = {}
-for k, v in sorted(d.items()):
-   new_d.setdefault(k, len(v))
-print(new_d)
+ls = []
+for k, v in d.items():
+   ls.append((len(v), k ))
+
+print(max(ls)[1])
