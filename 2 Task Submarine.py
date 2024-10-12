@@ -62,4 +62,15 @@ increases = 0
 decreases = 0
 
 # Твой код обработки данных и принятия решения по направлению дна
-...
+for i in range(len(depth_data)-1):
+    if depth_data[i] > depth_data[i+1]:
+        decreases += 1
+    elif depth_data[i] < depth_data[i+1]:
+        increases += 1
+
+if increases > decreases:
+    print('Вниз')
+elif increases < decreases:
+    print('Вверх')
+elif increases == decreases:
+    print('Ровно')
